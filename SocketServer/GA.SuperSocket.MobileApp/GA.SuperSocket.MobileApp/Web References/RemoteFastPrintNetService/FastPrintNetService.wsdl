@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetServiceRunStatus">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServiceRunStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServiceRunStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOnlineClientsInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetOnlineClientsInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOnlineClientsInfoResult" type="tns:ArrayOfOnlineClient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOnlineClient">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OnlineClient" nillable="true" type="tns:OnlineClient" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OnlineClient">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserAddress" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetOnlineClientsTotalCount">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetOnlineClientsTotalCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOnlineClientsTotalCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendMessageResult" type="tns:ResponseResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RequestStatus" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfOnlineClient" nillable="true" type="tns:ArrayOfOnlineClient" />
+      <s:element name="ResponseResult" nillable="true" type="tns:ResponseResult" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetServiceRunStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServiceRunStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceRunStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServiceRunStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOnlineClientsInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOnlineClientsInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetOnlineClientsInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOnlineClientsInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOnlineClientsTotalCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOnlineClientsTotalCount" />
+  </wsdl:message>
+  <wsdl:message name="GetOnlineClientsTotalCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOnlineClientsTotalCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceRunStatusHttpGetIn" />
+  <wsdl:message name="GetServiceRunStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetOnlineClientsInfoHttpGetIn" />
+  <wsdl:message name="GetOnlineClientsInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfOnlineClient" />
+  </wsdl:message>
+  <wsdl:message name="GetOnlineClientsTotalCountHttpGetIn" />
+  <wsdl:message name="GetOnlineClientsTotalCountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageHttpGetIn">
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="data" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageHttpGetOut">
+    <wsdl:part name="Body" element="tns:ResponseResult" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceRunStatusHttpPostIn" />
+  <wsdl:message name="GetServiceRunStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetOnlineClientsInfoHttpPostIn" />
+  <wsdl:message name="GetOnlineClientsInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfOnlineClient" />
+  </wsdl:message>
+  <wsdl:message name="GetOnlineClientsTotalCountHttpPostIn" />
+  <wsdl:message name="GetOnlineClientsTotalCountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageHttpPostIn">
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="data" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageHttpPostOut">
+    <wsdl:part name="Body" element="tns:ResponseResult" />
+  </wsdl:message>
+  <wsdl:portType name="FastPrintNetServiceSoap">
+    <wsdl:operation name="GetServiceRunStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取WebService服务器运行状态</wsdl:documentation>
+      <wsdl:input message="tns:GetServiceRunStatusSoapIn" />
+      <wsdl:output message="tns:GetServiceRunStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取在线客户端列表信息:GetOnlineClientsInfo</wsdl:documentation>
+      <wsdl:input message="tns:GetOnlineClientsInfoSoapIn" />
+      <wsdl:output message="tns:GetOnlineClientsInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsTotalCount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取在线客户端数量:GetOnlineClientsTotalCount</wsdl:documentation>
+      <wsdl:input message="tns:GetOnlineClientsTotalCountSoapIn" />
+      <wsdl:output message="tns:GetOnlineClientsTotalCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送消息</wsdl:documentation>
+      <wsdl:input message="tns:SendMessageSoapIn" />
+      <wsdl:output message="tns:SendMessageSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FastPrintNetServiceHttpGet">
+    <wsdl:operation name="GetServiceRunStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取WebService服务器运行状态</wsdl:documentation>
+      <wsdl:input message="tns:GetServiceRunStatusHttpGetIn" />
+      <wsdl:output message="tns:GetServiceRunStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取在线客户端列表信息:GetOnlineClientsInfo</wsdl:documentation>
+      <wsdl:input message="tns:GetOnlineClientsInfoHttpGetIn" />
+      <wsdl:output message="tns:GetOnlineClientsInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsTotalCount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取在线客户端数量:GetOnlineClientsTotalCount</wsdl:documentation>
+      <wsdl:input message="tns:GetOnlineClientsTotalCountHttpGetIn" />
+      <wsdl:output message="tns:GetOnlineClientsTotalCountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送消息</wsdl:documentation>
+      <wsdl:input message="tns:SendMessageHttpGetIn" />
+      <wsdl:output message="tns:SendMessageHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FastPrintNetServiceHttpPost">
+    <wsdl:operation name="GetServiceRunStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取WebService服务器运行状态</wsdl:documentation>
+      <wsdl:input message="tns:GetServiceRunStatusHttpPostIn" />
+      <wsdl:output message="tns:GetServiceRunStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取在线客户端列表信息:GetOnlineClientsInfo</wsdl:documentation>
+      <wsdl:input message="tns:GetOnlineClientsInfoHttpPostIn" />
+      <wsdl:output message="tns:GetOnlineClientsInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsTotalCount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取在线客户端数量:GetOnlineClientsTotalCount</wsdl:documentation>
+      <wsdl:input message="tns:GetOnlineClientsTotalCountHttpPostIn" />
+      <wsdl:output message="tns:GetOnlineClientsTotalCountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送消息</wsdl:documentation>
+      <wsdl:input message="tns:SendMessageHttpPostIn" />
+      <wsdl:output message="tns:SendMessageHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FastPrintNetServiceSoap" type="tns:FastPrintNetServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServiceRunStatus">
+      <soap:operation soapAction="http://tempuri.org/GetServiceRunStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsInfo">
+      <soap:operation soapAction="http://tempuri.org/GetOnlineClientsInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsTotalCount">
+      <soap:operation soapAction="http://tempuri.org/GetOnlineClientsTotalCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap:operation soapAction="http://tempuri.org/SendMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FastPrintNetServiceSoap12" type="tns:FastPrintNetServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServiceRunStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetServiceRunStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetOnlineClientsInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsTotalCount">
+      <soap12:operation soapAction="http://tempuri.org/GetOnlineClientsTotalCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FastPrintNetServiceHttpGet" type="tns:FastPrintNetServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetServiceRunStatus">
+      <http:operation location="/GetServiceRunStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsInfo">
+      <http:operation location="/GetOnlineClientsInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsTotalCount">
+      <http:operation location="/GetOnlineClientsTotalCount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <http:operation location="/SendMessage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FastPrintNetServiceHttpPost" type="tns:FastPrintNetServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetServiceRunStatus">
+      <http:operation location="/GetServiceRunStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsInfo">
+      <http:operation location="/GetOnlineClientsInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineClientsTotalCount">
+      <http:operation location="/GetOnlineClientsTotalCount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <http:operation location="/SendMessage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FastPrintNetService">
+    <wsdl:port name="FastPrintNetServiceSoap" binding="tns:FastPrintNetServiceSoap">
+      <soap:address location="http://127.0.0.1:8887/FastPrintNetService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FastPrintNetServiceSoap12" binding="tns:FastPrintNetServiceSoap12">
+      <soap12:address location="http://127.0.0.1:8887/FastPrintNetService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FastPrintNetServiceHttpGet" binding="tns:FastPrintNetServiceHttpGet">
+      <http:address location="http://127.0.0.1:8887/FastPrintNetService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FastPrintNetServiceHttpPost" binding="tns:FastPrintNetServiceHttpPost">
+      <http:address location="http://127.0.0.1:8887/FastPrintNetService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

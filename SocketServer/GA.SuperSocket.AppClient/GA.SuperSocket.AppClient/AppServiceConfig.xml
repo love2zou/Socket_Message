@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AppServiceConfig>
+  <!--远程web服务IP地址-->
+  <RemoteWebServiceURL>http://127.0.0.1:8887/</RemoteWebServiceURL>
+  <!--Socket服务器IP地址及端口-->
+  <Socket_Server_Address>127.0.0.1:8888</Socket_Server_Address>
+</AppServiceConfig>
